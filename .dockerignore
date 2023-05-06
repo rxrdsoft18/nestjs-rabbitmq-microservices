@@ -1,16 +1,16 @@
 # Versioning and metadata
-.git
-.gitignore
-.dockerignore
+#.git
+#.gitignore
+#.dockerignore
 
 # Build dependencies
-dist.do
+#dist.do
 node_modules
 
 # Environment (contains sensitive data)
-*.env
+#*.env
 
 # Misc
-.eslintrc.js
-.prettierrc
-README.md
+#.eslintrc.js
+#.prettierrc
+#README.md

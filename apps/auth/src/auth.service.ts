@@ -13,7 +13,6 @@ export class AuthService {
   ) {}
 
   async login(user: UserInterface, response: Response) {
-    console.log(user, ' user');
     const tokenPayload: TokenPayload = {
       userId: user._id.toHexString(),
     };

@@ -11,10 +11,8 @@ export class OrdersService {
     @Inject(BILLING_SERVICE) private readonly billingClient: ClientProxy,
   ) {}
   async createOrder(createOrderDto: CreateOrderDto, authentication: string) {
-    // const session = await this.orderRepository.startTransaction();
+    const session = await this.orderRepository.startTransaction();
     try {
-      console.log(createOrderDto, 'Create order');
-      console.log(authentication, ' auth token');
       const orderCreated = await this.orderRepository.create(createOrderDto);
 
       this.billingClient.emit('order_created', {
@@ -22,10 +20,10 @@ export class OrdersService {
         Authentication: authentication,
       });
 
-      // await session.commitTransaction();
+      await session.commitTransaction();
       return orderCreated;
     } catch (e) {
-      // await session.abortTransaction();
+      await session.abortTransaction();
       throw e;
     }
   }

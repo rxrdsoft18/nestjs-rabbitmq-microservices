@@ -7,8 +7,9 @@ COPY tsconfig.json tsconfig.json
 #COPY nest-cli.json nest-cli.json
 
 COPY apps/billing apps/billing
+COPY libs libs
 
-RUN npm install --only=development
+RUN npm install
 
 RUN npm run build billing
 

@@ -38,7 +38,6 @@ export class UsersService {
     if (!user) {
       throw new UnauthorizedException('Credentials are not valid.');
     }
-    console.log('validate user', user);
     const passwordIsValid = await bcrypt.compare(password, user.password);
 
     if (!passwordIsValid) {

@@ -7,10 +7,11 @@ COPY tsconfig.json tsconfig.json
 #COPY nest-cli.json nest-cli.json
 
 COPY apps/auth apps/auth
+COPY libs libs
 
-RUN npm install --only=development
+RUN npm install
 
-RUN npm run build orders
+RUN npm run build auth
 
 FROM node:alpine AS production
 
